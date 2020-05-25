@@ -4,13 +4,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-import { SplashScreen } from '../screens/splash-screen';
-// import { OnbordingScreen } from '../screens/onbording-screen';
-// import { WelcomeScreen } from '../screens/welcome-screen';
-// import { DiscoverScreen } from '../screens/discover-screen';
-// import { LibraryScreen } from '../screens/library-screen';
-// import { StoreScreen }  from '../screens/store-screen';
-// import { ProfileScreen } from '../screens/profile-screen';
+import { SplashScreen, 
+         OnbordingScreen, 
+         WelcomeScreen, 
+         DiscoverScreen, 
+         LibraryScreen, 
+         StoreScreen, 
+         ProfileScreen 
+        } from '@screens';
 
 const Stack = createStackNavigator();
 

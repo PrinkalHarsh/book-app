@@ -7,7 +7,6 @@ export const DiscoverScreen = (props) => {
         <Text>Discover screen</Text>
         <Button title="Next"
         onPress={() => props.navigation.navigate('library')}/>
-         <Button title="Go back" onPress={() => navigation.goBack('')} />
       </View>
     );
   }

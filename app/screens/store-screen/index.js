@@ -8,7 +8,6 @@ export const StoreScreen = (props) => {
         <Text>Store screen</Text>
         <Button title="Next"
         onPress={() => props.navigation.navigate('profile')}/>
-         <Button title="Go back" onPress={() => navigation.goBack('')} />
       </View>
     );
   }

@@ -7,7 +7,8 @@ export const WelcomeScreen = (props) => {
         <Text>Welcome screen</Text>
         <Button title="Next"
         onPress={() => props.navigation.navigate('BottomTabs')}/>
-         <Button title="Go back" onPress={() => navigation.goBack('')} />
-      </View>
+       </View>
     );
   };
+
+  

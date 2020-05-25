@@ -7,7 +7,6 @@ export const OnbordingScreen = (props) => {
         <Text>OnBording screen</Text>
         <Button title="Next"
         onPress={() => props.navigation.navigate('welcome')}/>
-         {/* <Button title="Go back" onPress={() => navigation.goBack('')} /> */}
       </View>
     );
   }

@@ -8,7 +8,6 @@ export const LibraryScreen = (props) => {
         <Text>library screen</Text>
         <Button title="Next"
         onPress={() => props.navigation.navigate('store')}/>
-         <Button title="Go back" onPress={() => navigation.goBack('')} />
       </View>
     );
   }
