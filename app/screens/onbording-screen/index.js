@@ -1,72 +1,64 @@
-import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+import React, {Component} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Button,
+  Image,
+  Dimensions,
+  SafeAreaView,
+} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 import styles from './style';
 import {Images} from '@theme';
+import {
+  scale,
+  verticalScale,
+  moderateScale,
+  ms,
+} from 'react-native-size-matters';
+
+const {width} = Dimensions.get('window');
 
 export const OnbordingScreen = props => {
   return (
-    <View style={styles.container}>
-      <Swiper style={styles.wrapper} height={200}>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>Hello Swiper</Text>
-        </View>
-        <View style={styles.slide2}>
-          <Text style={styles.text}>Beautiful</Text>
-        </View>
-        <View style={styles.slide3}>
-          <Text style={styles.text}>And simple</Text>
-        </View>
-      </Swiper>
-
-      <Swiper
-        style={styles.wrapper}
-        height={100}
-        dot={
-          <View
-            style={{
-              backgroundColor: 'red',
-              width: 5,
-              height: 5,
-              borderRadius: 4,
-              marginLeft: 3,
-              marginRight: 3,
-              marginTop: 3,
-              marginBottom: 3,
-            }}
-          />
-        }
-        activeDot={
-          <View
-            style={{
-              backgroundColor: '#000',
-              width: 8,
-              height: 8,
-              borderRadius: 4,
-              marginLeft: 3,
-              marginRight: 3,
-              marginTop: 3,
-              marginBottom: 3,
-            }}
-          />
-        }
-        paginationStyle={{
-          bottom: -23,
-          left: null,
-          right: 10,
-        }}
-        loop>
-        <View
-          style={styles.slide}
-          title={
-            <Text numberOfLines={1}>Aussie tourist dies at Bali hotel</Text>
-          }>
-          {/* <Image
-            style={styles.image}
-          /> */}
-        </View>
-      </Swiper>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => props.navigation.navigate('welcome')}>
+          <Text style={styles.btnskip}>Skip</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.contents}>
+        <Swiper
+          showsButtons={false}
+          dot={<View style={styles.dot} />}
+          activeDot={<View style={styles.activedot} />}>
+          <View style={styles.image1}>
+            <Image source={Images.onboard1} />
+            <Text style={styles.imagetxt}>
+              Share Your Favourite Books {'\n'} With Your Family And Friends
+            </Text>
+          </View>
+          <View style={styles.image}>
+            <Image source={Images.onboard2} />
+            <Text style={styles.imagetxt}>
+              Discovery 20 Million {'\n'} Books Shelved Online
+            </Text>
+          </View>
+          <View style={styles.image}>
+            <Image source={Images.onboard3} />
+            <Text style={styles.imagetxt3}>Buy And Sell Books With Us</Text>
+          </View>
+        </Swiper>
+      </View>
+      <View style={styles.footer}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => props.navigation.navigate('welcome')}>
+          <Text style={styles.btnText}>Get Started</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };

@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 
 const AuthStack = () => {
     return(
-        <Stack.Navigator>
+        <Stack.Navigator headerMode= 'none'>
             <Stack.Screen name="splash" component={SplashScreen} />
             <Stack.Screen name="onbording" component={OnbordingScreen} />
             <Stack.Screen name="welcome" component={WelcomeScreen} />
@@ -29,7 +29,7 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabs = () => {
     return(
-        <Tab.Navigator>
+        <Tab.Navigator headerMode= 'none'>
             <Tab.Screen name="discovery" component={DiscoverScreen} />
             <Tab.Screen name="library" component={LibraryScreen} />
             <Tab.Screen name="store" component={StoreScreen} />
@@ -41,7 +41,7 @@ const BottomTabs = () => {
 
 const RootNavigation = () => {
     return(
-        <Stack.Navigator>
+        <Stack.Navigator headerMode= 'none'>
             <Stack.Screen name="AuthStack" component={AuthStack} />
             <Stack.Screen name="BottomTabs" component={BottomTabs} />
         </Stack.Navigator>
