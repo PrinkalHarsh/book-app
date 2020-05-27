@@ -8,7 +8,7 @@ export const SplashScreen = props => {
   useEffect(() => {
     setTimeout(function() {
       props.navigation.navigate('onbording');
-    }, 3000);
+    }, 2000);
   });
 
   return (
