@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import {View, SafeAreaView, Image} from 'react-native';
+import {View, Image} from 'react-native';
 
 import {Images} from '@theme';
 import styles from './style';
 
 export const SplashScreen = props => {
+  // Timeout Function For Splash Screen
   useEffect(() => {
     setTimeout(function() {
       props.navigation.navigate('onbording');
@@ -12,6 +13,7 @@ export const SplashScreen = props => {
   });
 
   return (
+    // Splash Screen
     <View style={styles.container}>
       <Image style={styles.image1} source={Images.bookline} />
       <View style={styles.container2}>

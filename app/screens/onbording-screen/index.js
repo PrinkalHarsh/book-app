@@ -1,37 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-  SafeAreaView,
-} from 'react-native';
-import {scale, verticalScale, moderateScale} from 'react-native-size-matters';
-
+import {View, Text, TouchableOpacity, Image, SafeAreaView} from 'react-native';
 import Swiper from 'react-native-swiper';
 import styles from './style';
-import {onboarding} from '../../json/onbording';
-// import {moderateScale} from 'react-native-size-matters';
-
-const {width} = Dimensions.get('window');
+import {onboarding} from '@json';
 
 export const OnbordingScreen = props => {
   const [enableButton, setEnableButton] = useState(false);
-
-  // useEffect
-  // const onpress = () => {
-  //   // setindex(index);
-  //   // console.log(index);
-  // };
-
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => props.navigation.navigate('welcome')}>
-          <Text style={styles.btnskip}>Skip</Text>
-        </TouchableOpacity>
-      </View>
+      {/* Header Block */}
+      <TouchableOpacity
+        style={styles.header}
+        onPress={() => props.navigation.navigate('welcome')}>
+        <Text style={styles.btnskip}>Skip</Text>
+      </TouchableOpacity>
+
+      {/* Swiper Block */}
       <View style={styles.contents}>
         <Swiper
           loop={false}
@@ -55,14 +39,14 @@ export const OnbordingScreen = props => {
           })}
         </Swiper>
       </View>
+
+      {/* Footer Block  */}
       {enableButton ? (
-        <View style={styles.footer}>
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => props.navigation.navigate('welcome')}>
-            <Text style={styles.btnText}>Get Started</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => props.navigation.navigate('welcome')}>
+          <Text style={styles.btnText}>Get Started</Text>
+        </TouchableOpacity>
       ) : null}
     </SafeAreaView>
   );

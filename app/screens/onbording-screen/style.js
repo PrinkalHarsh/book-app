@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {Size} from '@theme';
-
 import {Colors} from '@theme';
 
 export default StyleSheet.create({
@@ -22,29 +21,13 @@ export default StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: Size.moderateScale(20),
-  },
-  footer: {
-    flex: 1,
-    alignItems: 'center',
-    paddingHorizontal: Size.moderateScale(20),
-    width: '100%',
+    marginBottom: Size.moderateScale(10),
   },
   imagecontain: {
     flex: 1,
     alignItems: 'center',
     paddingHorizontal: Size.moderateScale(20),
     width: '100%',
-  },
-  btn: {
-    marginTop: Size.moderateScale(10),
-    paddingHorizontal: Size.moderateScale(40),
-    paddingVertical: Size.moderateScale(10),
-    backgroundColor: Colors.Primary,
-  },
-  btnText: {
-    fontSize: Size.moderateScale(20),
-    color: Colors.Secondary,
   },
   dot: {
     backgroundColor: Colors.Secondary,
@@ -77,11 +60,22 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
   },
-
   imagetxt: {
     marginTop: Size.moderateScale(40),
     alignSelf: 'center',
     fontSize: Size.moderateScale(20),
     textAlign: 'center',
+  },
+  btn: {
+    width: '50%',
+    alignItems: 'center',
+    paddingVertical: Size.moderateScale(10),
+    backgroundColor: Colors.Primary,
+    marginLeft: Size.moderateScale(100),
+    borderRadius: Size.moderateScale(5),
+  },
+  btnText: {
+    fontSize: Size.moderateScale(20),
+    color: Colors.Secondary,
   },
 });
