@@ -41,13 +41,13 @@ export const OnbordingScreen = props => {
       </View>
 
       {/* Footer Block  */}
-      {enableButton ? (
+      {enableButton && (
         <TouchableOpacity
           style={styles.btn}
           onPress={() => props.navigation.navigate('welcome')}>
           <Text style={styles.btnText}>Get Started</Text>
         </TouchableOpacity>
-      ) : null}
+      )}
     </SafeAreaView>
   );
 };

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {View, Image} from 'react-native';
-
 import {Images} from '@theme';
 import styles from './style';
 
