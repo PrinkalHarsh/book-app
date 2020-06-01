@@ -11,14 +11,10 @@ export const WelcomeScreen = props => {
 
   const onPress = index => {
     for (var i = 0; i < topics.length; i++) {
-      if (topics[index].length < i) {
-        console.log('hello >>>');
-        console.log(index);
+      if (topics[i].title == topics[index].title) {
+        topics[i].is_selected = !topics[i].is_selected;
       }
     }
-    // if (topics[i].title == topics[index].title) {
-    //   topics[i].is_selected = !topics[i].is_selected;
-    // }
     setTopics(topics);
     setextra(extra + 1);
   };
