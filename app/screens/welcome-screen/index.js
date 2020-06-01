@@ -3,19 +3,29 @@ import {View, Text, FlatList} from 'react-native';
 import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {DATA} from '@json';
-import {Item} from '@components';
+import {BooksCategory} from '@components';
 
 export const WelcomeScreen = props => {
   const [topics, setTopics] = useState(DATA);
   const [extra, setextra] = useState(0);
 
   const onPress = index => {
+    var cnt = 0;
     for (var i = 0; i < topics.length; i++) {
       if (topics[i].title == topics[index].title) {
-        topics[i].is_selected = !topics[i].is_selected;
+        topics[i].is_selected = true;
+      }
+      if (topics[i].is_selected == true) {
+        cnt++;
+        if (cnt > 3) {
+          topics[index].is_selected = false;
+          alert('only Three books selected');
+        }
       }
     }
     setTopics(topics);
+    console.log(cnt);
+    console.log(topics);
     setextra(extra + 1);
   };
 
@@ -29,7 +39,7 @@ export const WelcomeScreen = props => {
         <FlatList
           data={topics}
           renderItem={({item, index}) => (
-            <Item
+            <BooksCategory
               onPress={() => onPress(index)}
               title={item.title}
               image_url={item.image_url}

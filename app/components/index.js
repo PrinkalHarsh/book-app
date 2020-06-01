@@ -1,1 +1,1 @@
-export * from './welcome-screen-image/index';
+export * from './books-category/index';

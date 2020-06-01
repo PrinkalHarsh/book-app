@@ -1,2 +1,2 @@
 export * from './onbording';
-export * from './welcome';
+export * from './books-category';

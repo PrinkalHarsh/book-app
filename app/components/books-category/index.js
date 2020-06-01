@@ -3,7 +3,7 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {Images} from '@theme';
 
-export const Item = ({title, image_url, is_selected, onPress}) => {
+export const BooksCategory = ({title, image_url, is_selected, onPress}) => {
   return (
     <View style={styles.item}>
       <TouchableOpacity
