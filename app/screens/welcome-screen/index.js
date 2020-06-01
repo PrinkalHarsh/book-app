@@ -1,46 +1,36 @@
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, FlatList, Image, Linking} from 'react-native';
-import {Images} from '@theme';
+import {View, Text, FlatList} from 'react-native';
 import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {DATA} from '@json';
-
-function Item({title, image_url, is_selected, onPress}) {
-  return (
-    <View style={styles.item}>
-      <TouchableOpacity onPress={() => onPress()}>
-        <Image source={image_url} />
-        {is_selected && (
-          <View style={styles.test}>
-            <Image source={Images.pink} />
-          </View>
-        )}
-      </TouchableOpacity>
-
-      <Text style={styles.itemtxt}>{title}</Text>
-    </View>
-  );
-}
+import {Item} from '@components';
 
 export const WelcomeScreen = props => {
   const [topics, setTopics] = useState(DATA);
+  const [extra, setextra] = useState(0);
 
   const onPress = index => {
-    console.log(topics[index]);
+    for (var i = 0; i < topics.length; i++) {
+      if (topics[index].length < i) {
+        console.log('hello >>>');
+        console.log(index);
+      }
+    }
+    // if (topics[i].title == topics[index].title) {
+    //   topics[i].is_selected = !topics[i].is_selected;
+    // }
+    setTopics(topics);
+    setextra(extra + 1);
   };
 
   return (
     <View style={styles.container}>
-      {/* Header Block */}
       <View style={styles.header}>
-        <Text style={styles.headertext}>Welcome {'\n'} Choose the topics</Text>
+        <Text style={styles.headerText}>Welcome</Text>
+        <Text style={styles.headerText}>Choose the topics</Text>
       </View>
-      {/* <Text onPress={() => settopics(DATA)}> Set Data</Text> */}
-      {/* <Text onPress={() => settopics()}> Empty Data</Text> */}
-      {/* Content Block */}
-      <View style={styles.content}>
+      <View style={styles.MainContainer}>
         <FlatList
-          numColumns={3}
           data={topics}
           renderItem={({item, index}) => (
             <Item
@@ -50,20 +40,19 @@ export const WelcomeScreen = props => {
               is_selected={item.is_selected}
             />
           )}
-          keyExtractor={item => item.id}
+          numColumns={3}
+          keyExtractor={(item, index) => index.toString()}
+          extraData={extra}
         />
         <TouchableOpacity style={styles.touchablecontent}>
-          <Text
-            style={styles.contenttxt}
-            onPress={() => Linking.openURL('https://google.com')}>
-            More Topics
-          </Text>
+          <Text style={styles.contenttxt}>More Topics</Text>
         </TouchableOpacity>
       </View>
-      {/* Footer Block */}
-      <TouchableOpacity style={styles.footer}>
-        <Text style={styles.btnText}>Apply</Text>
-      </TouchableOpacity>
+      <View style={styles.footer}>
+        <TouchableOpacity style={styles.footerbtn}>
+          <Text style={styles.btnText}>Apply</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

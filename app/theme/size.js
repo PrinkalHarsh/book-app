@@ -17,9 +17,13 @@ export const moderateScale = (size, factor = 0.5) =>
 export const s = scale;
 export const vs = verticalScale;
 export const ms = moderateScale;
+const deviceHeight = height;
+const deviceWidth = width;
 
 export const Size = {
   scale,
   verticalScale,
   moderateScale,
+  deviceHeight,
+  deviceWidth,
 };

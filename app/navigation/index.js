@@ -43,7 +43,7 @@ const RootNavigation = () => {
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="welcome" component={WelcomeScreen} />
       {/* <Stack.Screen name="AuthStack" component={AuthStack} />
-            <Stack.Screen name="BottomTabs" component={BottomTabs} /> */}
+      <Stack.Screen name="BottomTabs" component={BottomTabs} /> */}
     </Stack.Navigator>
   );
 };
