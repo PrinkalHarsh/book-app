@@ -3,7 +3,14 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {Images} from '@theme';
 
-export const BooksCategory = ({title, image_url, is_selected, onPress, id}) => {
+export const BooksCategory = ({
+  title,
+  image_url,
+  is_selected,
+  onPress,
+  id,
+  category,
+}) => {
   return (
     <View style={styles.item}>
       <TouchableOpacity onPress={() => onPress()}>
@@ -16,7 +23,7 @@ export const BooksCategory = ({title, image_url, is_selected, onPress, id}) => {
         )}
       </TouchableOpacity>
       <Text style={styles.MainContainerText}>
-        {id} {title}
+        {title} {category}
       </Text>
     </View>
   );

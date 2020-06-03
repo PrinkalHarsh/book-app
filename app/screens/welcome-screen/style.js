@@ -17,6 +17,16 @@ export default StyleSheet.create({
     color: Colors.Secondary,
     fontSize: Size.moderateScale(22),
   },
+  category: {
+    backgroundColor: Colors.Primary,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  categoryText: {
+    color: Colors.Secondary,
+    fontSize: Size.moderateScale(16),
+  },
+
   MainContainer: {
     flex: 1,
     padding: Size.moderateScale(5),

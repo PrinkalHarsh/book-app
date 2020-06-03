@@ -23,7 +23,7 @@ export default StyleSheet.create({
   },
 
   MainContainerText: {
-    paddingLeft: Size.moderateScale(32),
+    paddingLeft: Size.moderateScale(20),
     marginBottom: Size.moderateScale(10),
     fontSize: Size.moderateScale(16),
     paddingTop: Size.moderateScale(5),
