@@ -23,12 +23,9 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  touchablecontent: {
-    alignContent: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   contenttxt: {
+    alignSelf: 'center',
+    justifyContent: 'center',
     textDecorationLine: 'underline',
     color: Colors.Primary,
   },

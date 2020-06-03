@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {View, Text, FlatList} from 'react-native';
 import styles from './style';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -6,14 +6,17 @@ import {DATA} from '@json';
 import {BooksCategory} from '@components';
 
 export const WelcomeScreen = props => {
-  const [topics, setTopics] = useState(DATA);
+  const [topics, setTopics] = useState(DATA.filter(DATA => DATA.id < 9));
   const [extra, setextra] = useState(0);
+  const [postCount, setpostCount] = useState(9);
+  const [enableButton, setEnableButton] = useState(true);
+  const flatListRef = useRef();
 
   const onPress = index => {
     var cnt = 0;
     for (var i = 0; i < topics.length; i++) {
-      if (topics[i].title == topics[index].title) {
-        topics[i].is_selected = true;
+      if (topics[i].id == topics[index].id) {
+        topics[i].is_selected = !topics[i].is_selected;
       }
       if (topics[i].is_selected == true) {
         cnt++;
@@ -23,24 +26,31 @@ export const WelcomeScreen = props => {
         }
       }
     }
-    setTopics(topics);
-    console.log(cnt);
-    console.log(topics);
+    setextra(extra + 1);
     setextra(extra + 1);
   };
 
   return (
+    // Main Content Block
     <View style={styles.container}>
+      {/* Header Block */}
       <View style={styles.header}>
         <Text style={styles.headerText}>Welcome</Text>
         <Text style={styles.headerText}>Choose the topics</Text>
       </View>
+
+      {/* content Block */}
       <View style={styles.MainContainer}>
         <FlatList
+          ref={flatListRef}
+          onContentSizeChange={() => {
+            flatListRef.current.scrollToEnd({animated: true});
+          }}
           data={topics}
           renderItem={({item, index}) => (
             <BooksCategory
               onPress={() => onPress(index)}
+              id={item.id}
               title={item.title}
               image_url={item.image_url}
               is_selected={item.is_selected}
@@ -50,10 +60,22 @@ export const WelcomeScreen = props => {
           keyExtractor={(item, index) => index.toString()}
           extraData={extra}
         />
-        <TouchableOpacity style={styles.touchablecontent}>
-          <Text style={styles.contenttxt}>More Topics</Text>
-        </TouchableOpacity>
+        {enableButton && (
+          <Text
+            style={styles.contenttxt}
+            onPress={() => {
+              setTopics(DATA.filter(DATA => DATA.id < postCount + 6));
+              setpostCount(postCount + 3);
+              if (DATA.length == postCount + 3) {
+                setEnableButton(false);
+              }
+            }}>
+            More Topics
+          </Text>
+        )}
       </View>
+
+      {/* Footer Block */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerbtn}>
           <Text style={styles.btnText}>Apply</Text>

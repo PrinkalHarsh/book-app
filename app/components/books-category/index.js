@@ -3,12 +3,10 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {Images} from '@theme';
 
-export const BooksCategory = ({title, image_url, is_selected, onPress}) => {
+export const BooksCategory = ({title, image_url, is_selected, onPress, id}) => {
   return (
     <View style={styles.item}>
-      <TouchableOpacity
-        onPress={() => onPress()}
-        style={{flex: 1, flexDirection: 'column', margin: 1}}>
+      <TouchableOpacity onPress={() => onPress()}>
         <Image source={image_url} style={styles.imageThumbnail} />
 
         {is_selected && (
@@ -17,7 +15,9 @@ export const BooksCategory = ({title, image_url, is_selected, onPress}) => {
           </View>
         )}
       </TouchableOpacity>
-      <Text style={styles.MainContainerText}>{title}</Text>
+      <Text style={styles.MainContainerText}>
+        {id} {title}
+      </Text>
     </View>
   );
 };
