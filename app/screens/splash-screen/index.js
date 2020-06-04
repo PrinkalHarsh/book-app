@@ -14,9 +14,13 @@ export const SplashScreen = props => {
   return (
     // Splash Screen
     <View style={styles.container}>
-      <Image style={styles.image1} source={Images.bookline} />
+      <Image
+        style={styles.verticalImage}
+        source={Images.bookline}
+        resizeMode="stretch"
+      />
       <View style={styles.container2}>
-        <Image style={styles.image2} source={Images.book} />
+        <Image source={Images.book} />
       </View>
     </View>
   );

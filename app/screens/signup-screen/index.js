@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
 import {Images} from '@theme';
 import styles from './style';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 export const SignupScreen = props => {
   return (
@@ -12,13 +13,14 @@ export const SignupScreen = props => {
         <Text style={styles.headerText}>Book Share</Text>
       </View>
 
-      <View style={styles.content}>
+      {/* content Block */}
+      <SafeAreaView style={styles.content}>
         <TouchableOpacity
           style={styles.back}
           onPress={() => props.navigation.navigate('landing')}>
-          <Text style={styles.backText}> Back </Text>
+          <Image style={styles.image} source={Images.group} />
         </TouchableOpacity>
-        <View style={styles.form}>
+        <ScrollView style={styles.form}>
           <Text style={styles.formText}>Create Account</Text>
           <TextInput style={styles.formTextInput} placeholder="Full Name" />
           <TextInput style={styles.formTextInput} placeholder="Email" />
@@ -27,7 +29,11 @@ export const SignupScreen = props => {
             style={styles.formTextInput}
             placeholder="Confirm Password"
           />
-        </View>
+        </ScrollView>
+      </SafeAreaView>
+
+      {/* Fotter Block */}
+      <View style={styles.footer}>
         <TouchableOpacity
           style={styles.btnsignup}
           onPress={() => props.navigation.navigate('welcome')}>

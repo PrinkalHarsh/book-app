@@ -8,14 +8,17 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
   },
   container2: {
-    height: '100%',
-    width: '100%',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  image1: {
-    marginLeft: Size.moderateScale(20),
+  verticalImage: {
+    flex: 1,
+    marginLeft: Size.moderateScale(30),
   },
   image2: {
     alignSelf: 'center',

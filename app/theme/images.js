@@ -15,4 +15,6 @@ export const Images = {
   sport: require('./image/sport.png'),
   pink: require('./image/right.png'),
   text: require('./image/text.png'),
+  leftarrow: require('./image/leftarrow.png'),
+  group: require('./image/Group.png'),
 };
