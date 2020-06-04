@@ -11,7 +11,7 @@ export const OnbordingScreen = props => {
       {/* Header Block */}
       <TouchableOpacity
         style={styles.header}
-        onPress={() => props.navigation.navigate('welcome')}>
+        onPress={() => props.navigation.navigate('landing')}>
         <Text style={styles.btnskip}>Skip</Text>
       </TouchableOpacity>
 
@@ -44,7 +44,7 @@ export const OnbordingScreen = props => {
       {enableButton && (
         <TouchableOpacity
           style={styles.btn}
-          onPress={() => props.navigation.navigate('welcome')}>
+          onPress={() => props.navigation.navigate('landing')}>
           <Text style={styles.btnText}>Get Started</Text>
         </TouchableOpacity>
       )}

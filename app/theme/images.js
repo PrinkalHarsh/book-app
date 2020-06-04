@@ -14,4 +14,5 @@ export const Images = {
   culture: require('./image/culture.png'),
   sport: require('./image/sport.png'),
   pink: require('./image/right.png'),
+  text: require('./image/text.png'),
 };

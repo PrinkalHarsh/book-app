@@ -11,6 +11,9 @@ import {
   LibraryScreen,
   StoreScreen,
   ProfileScreen,
+  LandingScreen,
+  SigninScreen,
+  SignupScreen,
 } from '@screens';
 
 const Stack = createStackNavigator();
@@ -20,6 +23,9 @@ const AuthStack = () => {
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="splash" component={SplashScreen} />
       <Stack.Screen name="onbording" component={OnbordingScreen} />
+      <Stack.Screen name="landing" component={LandingScreen} />
+      <Stack.Screen name="signin" component={SigninScreen} />
+      <Stack.Screen name="signup" component={SignupScreen} />
       <Stack.Screen name="welcome" component={WelcomeScreen} />
     </Stack.Navigator>
   );
@@ -41,7 +47,7 @@ const BottomTabs = () => {
 const RootNavigation = () => {
   return (
     <Stack.Navigator headerMode="none">
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
+      <Stack.Screen name="signup" component={SignupScreen} />
       {/* <Stack.Screen name="AuthStack" component={AuthStack} />
       <Stack.Screen name="BottomTabs" component={BottomTabs} /> */}
     </Stack.Navigator>
