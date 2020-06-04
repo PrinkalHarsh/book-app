@@ -14,13 +14,11 @@ export const LandingScreen = props => {
 
       {/* content Block */}
       <View style={styles.content}>
-        <View style={styles.image}>
-          <Image source={Images.pink} />
-          <Image source={Images.text} style={styles.imageText} />
-        </View>
-
-        {/* Footer Block */}
-
+        <Image style={styles.image} source={Images.pink} />
+        <Image source={Images.text} style={styles.imageText} />
+      </View>
+      {/* Footer Block */}
+      <View style={styles.footer}>
         <TouchableOpacity
           style={styles.btnsignup}
           onPress={() => props.navigation.navigate('signup')}>

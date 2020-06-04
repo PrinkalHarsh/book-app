@@ -19,27 +19,30 @@ export default StyleSheet.create({
     fontSize: Size.moderateScale(36),
     fontWeight: '600',
   },
+
   content: {
+    flex: 1,
     borderTopLeftRadius: Size.moderateScale(18),
     borderTopRightRadius: Size.moderateScale(18),
     backgroundColor: Colors.Secondary,
-    height: Size.deviceHeight * 0.7,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
     alignItems: 'center',
     justifyContent: 'center',
-    padding: Size.moderateScale(30),
+    marginTop: Size.moderateScale(10),
   },
   imageText: {
-    margin: Size.moderateScale(30),
+    margin: Size.moderateScale(20),
   },
   btnsignup: {
     alignItems: 'center',
-    paddingVertical: Size.moderateScale(18),
+    paddingVertical: Size.moderateScale(15),
     backgroundColor: Colors.Primary,
     borderRadius: Size.moderateScale(15),
-    marginVertical: Size.moderateScale(20),
     marginHorizontal: Size.moderateScale(35),
+    marginTop: Size.moderateScale(10),
   },
   btnsignupText: {
     fontSize: Size.moderateScale(18),
@@ -48,16 +51,20 @@ export default StyleSheet.create({
   },
   btnsignin: {
     alignItems: 'center',
-    paddingVertical: Size.moderateScale(10),
+    paddingVertical: Size.moderateScale(15),
     backgroundColor: Colors.Secondary,
     borderRadius: Size.moderateScale(15),
     borderWidth: Size.moderateScale(3),
     borderColor: 'black',
-    marginVertical: Size.moderateScale(10),
     marginHorizontal: Size.moderateScale(35),
+    marginTop: Size.moderateScale(15),
   },
   btnsigninText: {
     fontSize: Size.moderateScale(18),
     fontWeight: '600',
+  },
+  footer: {
+    height: Size.deviceHeight * 0.24,
+    backgroundColor: Colors.Secondary,
   },
 });
