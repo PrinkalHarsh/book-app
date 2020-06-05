@@ -71,8 +71,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingVertical: Size.moderateScale(10),
     backgroundColor: Colors.Primary,
-    marginLeft: Size.moderateScale(100),
     borderRadius: Size.moderateScale(5),
+    justifyContent: 'center',
+    alignSelf: 'center',
   },
   btnText: {
     fontSize: Size.moderateScale(20),

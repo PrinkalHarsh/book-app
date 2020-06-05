@@ -10,14 +10,23 @@ export default StyleSheet.create({
   header: {
     backgroundColor: Colors.Primary,
     height: Size.deviceHeight * 0.3,
-    paddingHorizontal: Size.moderateScale(20),
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: Size.moderateScale(30),
   },
   headerText: {
+    height: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  createaccountText: {
     color: Colors.Secondary,
     fontSize: Size.moderateScale(36),
     fontWeight: '600',
+  },
+  image: {
+    justifyContent: 'center',
+    tintColor: 'white',
+    height: Size.moderateScale(24),
+    width: Size.moderateScale(14),
   },
   content: {
     flex: 1,
@@ -28,15 +37,6 @@ export default StyleSheet.create({
   },
   form: {
     flex: 1,
-  },
-  formText: {
-    fontSize: Size.moderateScale(36),
-    fontWeight: '600',
-    marginVertical: Size.moderateScale(15),
-    paddingTop: Size.moderateScale(15),
-    paddingBottom: Size.moderateScale(5),
-    alignContent: 'center',
-    justifyContent: 'space-between',
   },
   formTextInput: {
     borderWidth: Size.moderateScale(1),
@@ -49,18 +49,25 @@ export default StyleSheet.create({
   footer: {
     backgroundColor: Colors.Secondary,
     height: Size.deviceHeight * 0.11,
+    paddingBottom: Size.moderateScale(10),
+    paddingHorizontal: Size.moderateScale(30),
   },
   btnsignup: {
     alignItems: 'center',
-    paddingVertical: Size.moderateScale(15),
     backgroundColor: Colors.Primary,
     borderRadius: Size.moderateScale(12),
-    marginHorizontal: Size.moderateScale(35),
-    marginTop: Size.moderateScale(15),
+    paddingVertical: Size.moderateScale(15),
   },
   btnsignupText: {
     fontSize: Size.moderateScale(18),
     fontWeight: '600',
     color: Colors.Secondary,
+  },
+  back: {
+    width: Size.moderateScale(40),
+    height: Size.moderateScale(40),
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

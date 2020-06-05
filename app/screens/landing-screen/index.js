@@ -14,8 +14,18 @@ export const LandingScreen = props => {
 
       {/* content Block */}
       <View style={styles.content}>
-        <Image style={styles.image} source={Images.pink} />
-        <Image source={Images.text} style={styles.imageText} />
+        <Image
+          style={styles.image}
+          source={Images.landingBook}
+          resizeMode={'contain'}
+        />
+        <Text style={styles.contentText}>
+          Welcome to the Online Library. A Service {'\n'}
+          dedicated to knowledgeble people of {'\n'} the world. This is one of
+          the largest and {'\n'} most authoritative collectin of online {'\n'}{' '}
+          journals, books, and research resources,{'\n'} covering life, health,
+          social and physical {'\n'} sciences.{' '}
+        </Text>
       </View>
       {/* Footer Block */}
       <View style={styles.footer}>

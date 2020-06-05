@@ -17,4 +17,5 @@ export const Images = {
   text: require('./image/text.png'),
   leftarrow: require('./image/leftarrow.png'),
   group: require('./image/Group.png'),
+  landingBook: require('./image/landingBook.png'),
 };

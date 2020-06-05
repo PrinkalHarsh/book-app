@@ -8,16 +8,23 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
   },
   header: {
-    backgroundColor: Colors.Primary,
     height: Size.deviceHeight * 0.41,
-    paddingHorizontal: Size.moderateScale(20),
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: Size.moderateScale(40),
   },
   headerText: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '90%',
+  },
+  signinText: {
     color: Colors.Secondary,
     fontSize: Size.moderateScale(36),
     fontWeight: '600',
+  },
+  image: {
+    tintColor: 'white',
+    height: Size.moderateScale(24),
+    width: Size.moderateScale(14),
   },
   content: {
     flex: 1,
@@ -68,5 +75,11 @@ export default StyleSheet.create({
     fontSize: Size.moderateScale(18),
     fontWeight: '600',
     color: Colors.Secondary,
+  },
+  back: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: Size.moderateScale(40),
+    height: Size.moderateScale(40),
   },
 });

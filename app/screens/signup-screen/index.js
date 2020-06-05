@@ -10,18 +10,26 @@ export const SignupScreen = props => {
     <View style={styles.container}>
       {/* Header Block */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Book Share</Text>
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity
+            style={styles.back}
+            onPress={() => props.navigation.navigate('landing')}>
+            <Image
+              style={styles.image}
+              source={Images.group}
+              resizeMode={'contain'}
+            />
+          </TouchableOpacity>
+          <View style={{flex: 1}}></View>
+        </View>
+        <View style={styles.headerText}>
+          <Text style={styles.createaccountText}>Create Account</Text>
+        </View>
       </View>
 
       {/* content Block */}
       <SafeAreaView style={styles.content}>
-        <TouchableOpacity
-          style={styles.back}
-          onPress={() => props.navigation.navigate('landing')}>
-          <Image style={styles.image} source={Images.group} />
-        </TouchableOpacity>
         <ScrollView style={styles.form}>
-          <Text style={styles.formText}>Create Account</Text>
           <TextInput style={styles.formTextInput} placeholder="Full Name" />
           <TextInput style={styles.formTextInput} placeholder="Email" />
           <TextInput style={styles.formTextInput} placeholder="Password" />

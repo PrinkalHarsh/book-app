@@ -31,10 +31,15 @@ export default StyleSheet.create({
   image: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: Size.moderateScale(10),
+    height: Size.deviceHeight * 0.15,
+    width: Size.deviceHeight * 0.2,
+    marginTop: Size.moderateScale(5),
   },
-  imageText: {
-    margin: Size.moderateScale(20),
+  contentText: {
+    margin: Size.moderateScale(25),
+    fontSize: Size.moderateScale(16),
+    justifyContent: 'center',
+    textAlign: 'center',
   },
   btnsignup: {
     alignItems: 'center',
