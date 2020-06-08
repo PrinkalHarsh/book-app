@@ -8,24 +8,22 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
   },
   header: {
-    height: Size.deviceHeight * 0.41,
-    padding: Size.moderateScale(40),
+    height: Size.deviceHeight * 0.29,
+    paddingHorizontal: Size.moderateScale(20),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerText: {
+    height: '90%',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '90%',
   },
   signinText: {
     color: Colors.Secondary,
     fontSize: Size.moderateScale(36),
     fontWeight: '600',
   },
-  image: {
-    tintColor: 'white',
-    height: Size.moderateScale(24),
-    width: Size.moderateScale(14),
-  },
+
   content: {
     flex: 1,
     backgroundColor: Colors.Secondary,
@@ -59,6 +57,9 @@ export default StyleSheet.create({
     borderRadius: Size.moderateScale(12),
     fontSize: Size.moderateScale(16),
   },
+  error: {
+    color: 'red',
+  },
   footer: {
     backgroundColor: Colors.Secondary,
     height: Size.deviceHeight * 0.12,
@@ -75,11 +76,5 @@ export default StyleSheet.create({
     fontSize: Size.moderateScale(18),
     fontWeight: '600',
     color: Colors.Secondary,
-  },
-  back: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: Size.moderateScale(40),
-    height: Size.moderateScale(40),
   },
 });

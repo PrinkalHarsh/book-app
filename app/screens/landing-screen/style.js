@@ -8,7 +8,6 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
   },
   header: {
-    backgroundColor: Colors.Primary,
     height: Size.deviceHeight * 0.3,
     paddingHorizontal: Size.moderateScale(20),
     justifyContent: 'center',

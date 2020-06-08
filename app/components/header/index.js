@@ -1,13 +1,22 @@
 import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from './style';
+import {Images} from '@theme';
 
-const header = () => {
+export const HeaderBlock = () => {
   return (
-    <View style={styles.content}>
-      <Text>Book Share</Text>
+    <View style={styles.container}>
+      {/* Header Block */}
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.back}>
+          <Image
+            style={styles.image}
+            source={Images.group}
+            resizeMode={'contain'}
+          />
+        </TouchableOpacity>
+        <View style={{flex: 1}}></View>
+      </View>
     </View>
   );
 };
-
-export default header;

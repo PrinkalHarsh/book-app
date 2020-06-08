@@ -8,9 +8,10 @@ export default StyleSheet.create({
     backgroundColor: Colors.Primary,
   },
   header: {
-    backgroundColor: Colors.Primary,
-    height: Size.deviceHeight * 0.3,
-    padding: Size.moderateScale(30),
+    height: Size.deviceHeight * 0.18,
+    paddingHorizontal: Size.moderateScale(20),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerText: {
     height: '90%',
@@ -45,6 +46,9 @@ export default StyleSheet.create({
     padding: Size.moderateScale(15),
     borderRadius: Size.moderateScale(12),
     fontSize: Size.moderateScale(16),
+  },
+  error: {
+    color: 'red',
   },
   footer: {
     backgroundColor: Colors.Secondary,

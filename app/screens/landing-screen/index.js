@@ -3,6 +3,7 @@ import {View, Text, Image} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Images} from '@theme';
 import styles from './style';
+import {HeaderBlock} from '@components';
 
 export const LandingScreen = props => {
   return (
