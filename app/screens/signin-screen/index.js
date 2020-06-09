@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
-import {Images} from '@theme';
 import styles from './style';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {HeaderBlock} from '@components';
+import {Validation} from '@packages';
 
 export const SigninScreen = props => {
   const [searchEmail, setSearchEmail] = useState('');
@@ -12,54 +12,44 @@ export const SigninScreen = props => {
   const [textemail, settextemail] = useState(false);
   const [textpassword, settextpassword] = useState(false);
 
-  const onChangeEmail = email => {
-    setSearchEmail(email);
-  };
-
-  const onBlurEmail = () => {
-    setSearchEmail(searchEmail);
-    var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (searchEmail.trim() != '') {
-      if (reg.test(searchEmail) == true) {
-        settextemail(false);
-      } else {
-        settextemail(true);
-      }
-    }
-  };
-
-  const onChangePassword = password => {
-    setSearchPassword(password);
-  };
-
-  const onBlurPassword = () => {
-    setSearchPassword(searchPassword);
-    var passw = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
-    if (searchPassword.trim() != '') {
-      // console.log('valid password format');
-      if (passw.test(searchPassword) == true) {
-        settextpassword(false);
-      } else {
-        settextpassword(true);
-      }
-    }
-  };
-
   const onPress = () => {
-    setSearchEmail(searchEmail);
-    var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var passw = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
-    if (reg.test(searchEmail) == true && passw.test(searchPassword) == true) {
-      props.navigation.navigate('welcome');
-    } else {
-      if (reg.test(searchEmail) == false) {
-        settextemail(true);
-      }
-      if (passw.test(searchPassword) == false) {
-        settextpassword(true);
-      }
+    settextemail(false);
+    var emailError = Validation('email', searchEmail);
+    console.log('emailError,', emailError);
+    if (emailError) {
+      settextemail(emailError);
+    }
+
+    settextpassword(false);
+    var passwordError = Validation('password', searchPassword);
+    console.log('passwordError,', passwordError);
+    if (passwordError) {
+      settextpassword(passwordError);
     }
   };
+
+  const onBlur = () => {
+    settextemail(false);
+    var emailError = Validation('email', searchEmail);
+    console.log('emailError,', emailError);
+    if (emailError) {
+      settextemail(emailError);
+    }
+
+    settextpassword(false);
+    var passwordError = Validation('password', searchPassword);
+    console.log('passwordError,', passwordError);
+    if (passwordError) {
+      settextpassword(passwordError);
+    }
+  };
+  //   settextpassword(false);
+  //   var passwordError = Validation('password', searchPassword);
+  //   console.log('passwordError,', passwordError);
+  //   if (passwordError) {
+  //     settextpassword(passwordError);
+  //   }
+  // };
 
   return (
     <View style={styles.container}>
@@ -72,44 +62,39 @@ export const SigninScreen = props => {
       </View>
 
       {/* Content Block */}
-      <View style={styles.content}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'padding' : ''}
+        style={styles.content}>
         <SafeAreaView style={styles.content}>
           <ScrollView style={styles.form}>
             <TextInput
               style={styles.formTextInput}
-              maxLength={30}
+              maxLength={40}
               placeholder="Email"
               autoFocus={true}
               keyboardType="email-address"
               value={searchEmail}
-              onChangeText={email => onChangeEmail(email)}
-              onBlur={() => onBlurEmail()}
+              onChangeText={email => setSearchEmail(email)}
+              onBlur={() => onBlur()}
             />
-            {textemail && (
-              <Text style={styles.error}> Please Enter Valid Email Id. </Text>
-            )}
+            {textemail && <Text style={styles.error}> {textemail} </Text>}
             <TextInput
               style={styles.formTextInput}
               secureTextEntry={true}
               placeholder="Password"
               maxLength={16}
               value={searchPassword}
-              onChangeText={password => onChangePassword(password)}
-              onBlur={() => onBlurPassword()}
+              onChangeText={password => setSearchPassword(password)}
+              onBlur={() => onBlur()}
             />
-            {textpassword && (
-              <Text style={styles.error}>Please Enter Valid Password. </Text>
-            )}
+            {textpassword && <Text style={styles.error}> {textpassword} </Text>}
           </ScrollView>
         </SafeAreaView>
-      </View>
+      </KeyboardAvoidingView>
 
       {/* Footer Block */}
       <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.btnsignup}
-          // onPress={() => props.navigation.navigate('welcome')}
-          onPress={() => onPress()}>
+        <TouchableOpacity style={styles.btnsignup} onPress={() => onPress()}>
           <Text style={styles.btnsignupText}> Sign Up</Text>
         </TouchableOpacity>
       </View>

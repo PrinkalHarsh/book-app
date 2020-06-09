@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import {View, Text, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
-import {Images} from '@theme';
+import {Validation} from '@packages';
 import styles from './style';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {HeaderBlock} from '@components';
 
 export const SignupScreen = props => {
@@ -16,107 +15,55 @@ export const SignupScreen = props => {
   const [textpassword, settextpassword] = useState(false);
   const [textconfirmpassword, settextconfirmpassword] = useState(false);
 
-  const onChangeFullname = text => {
-    setSearchfullname(text);
-  };
-
-  const onBlurFullname = () => {
-    setSearchfullname(searchfullname);
-    // var reg = /^[a-zA-Z ]*$/;
-    var reg = /^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/;
-
-    if (searchfullname.trim != '') {
-      if (reg.test(searchfullname) == true) {
-        settextfullname(false);
-      } else {
-        settextfullname(true);
-      }
-    } else {
-      settextfullname(true);
-    }
-  };
-
-  const onChangeEmail = email => {
-    setSearchEmail(email);
-  };
-
-  const onBlurEmail = () => {
-    setSearchEmail(searchEmail);
-    var regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (searchEmail.trim() != '') {
-      if (regemail.test(searchEmail) == true) {
-        settextemail(false);
-      } else {
-        settextemail(true);
-      }
-    }
-  };
-
-  const onChangePassword = password => {
-    setSearchPassword(password);
-  };
-
-  const onBlurPassword = () => {
-    setSearchPassword(searchPassword);
-    var passw = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
-    if (searchPassword.trim() != '') {
-      if (passw.test(searchPassword) == true) {
-        settextpassword(false);
-      } else {
-        settextpassword(true);
-      }
-    }
-  };
-
-  const onChangeconfirmPassword = confirmpassword => {
-    setConfirmPassword(confirmpassword);
-  };
-
-  const onBlurconfirmPassword = () => {
-    setConfirmPassword(confirmPassword);
-
-    if (
-      confirmPassword.match(searchPassword) &&
-      confirmPassword.length == searchPassword.length
-    ) {
-      settextconfirmpassword(false);
-    } else {
-      settextconfirmpassword(true);
-    }
-  };
-
   const onPress = () => {
-    var reg = /^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/;
-    var regemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    var passw = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
-    if (
-      reg.test(searchfullname) == true &&
-      regemail.test(searchEmail) == true &&
-      passw.test(searchPassword) == true &&
-      confirmPassword.match(searchPassword) &&
-      confirmPassword.length == searchPassword.length
-    ) {
-      props.navigation.navigate('welcome');
-    } else {
-      if (reg.test(searchfullname) == false) {
-        settextfullname(true);
-      }
-      if (regemail.test(searchEmail) == false) {
-        settextemail(true);
-      }
-      if (passw.test(searchPassword) == false) {
-        settextpassword(true);
-      }
-      if (
-        confirmPassword.match(searchPassword) &&
-        confirmPassword.length == searchPassword.length
-      ) {
-        settextconfirmpassword(false);
-      } else {
-        settextconfirmpassword(true);
-      }
+    settextfullname(false);
+    var nameError = Validation('name', searchfullname);
+    console.log('nameError,', nameError);
+    if (nameError) {
+      settextfullname(nameError);
+    }
+
+    settextemail(false);
+    var emailError = Validation('email', searchEmail);
+    console.log('emailError,', emailError);
+    if (emailError) {
+      settextemail(emailError);
+    }
+
+    settextpassword(false);
+    var passwordError = Validation('password', searchPassword);
+    console.log('passwordError,', passwordError);
+    if (passwordError) {
+      settextpassword(passwordError);
     }
   };
+
+  const onBlur = () => {
+    settextfullname(false);
+    var nameError = Validation('name', searchfullname);
+    console.log('nameError,', nameError);
+    if (nameError) {
+      settextfullname(nameError);
+    }
+
+    settextemail(false);
+    var emailError = Validation('email', searchEmail);
+    console.log('emailError,', emailError);
+    if (emailError) {
+      settextemail(emailError);
+    }
+
+    settextpassword(false);
+    var passwordError = Validation('password', searchPassword);
+    console.log('passwordError,', passwordError);
+    if (passwordError) {
+      settextpassword(passwordError);
+    }
+
+    settextconfirmpassword(false);
+    var confirmpasswordError = Validation('confirmpassword', confirmPassword);
+  };
+
   return (
     <View style={styles.container}>
       {/* Header Block */}
@@ -128,7 +75,9 @@ export const SignupScreen = props => {
       </View>
 
       {/* content Block */}
-      <SafeAreaView style={styles.content}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS == 'ios' ? 'padding' : ''}
+        style={styles.content}>
         <ScrollView style={styles.form}>
           <TextInput
             style={styles.formTextInput}
@@ -136,34 +85,29 @@ export const SignupScreen = props => {
             autoFocus={true}
             keyboardType="default"
             value={searchfullname}
-            onChangeText={text => onChangeFullname(text)}
-            onBlur={() => onBlurFullname()}
+            onChangeText={name => setSearchfullname(name)}
+            onBlur={() => onBlur()}
           />
-          {textfullname && (
-            <Text style={styles.error}> Please Enter Valid Name. </Text>
-          )}
+          {textfullname && <Text style={styles.error}> {textfullname} </Text>}
           <TextInput
             style={styles.formTextInput}
             placeholder="Email"
             keyboardType="email-address"
             value={searchEmail}
-            onChangeText={email => onChangeEmail(email)}
-            onBlur={() => onBlurEmail()}
+            onChangeText={email => setSearchEmail(email)}
+            onBlur={() => onBlur()}
           />
-          {textemail && (
-            <Text style={styles.error}> Please Enter Valid Email Id. </Text>
-          )}
+          {textemail && <Text style={styles.error}> {textemail} </Text>}
           <TextInput
             style={styles.formTextInput}
             placeholder="Password"
             maxLength={16}
             value={searchPassword}
-            onChangeText={password => onChangePassword(password)}
-            onBlur={() => onBlurPassword()}
+            onChangeText={password => setSearchPassword(password)}
+            onBlur={() => onBlur()}
           />
-          {textpassword && (
-            <Text style={styles.error}> Please Enter Valid Password. </Text>
-          )}
+          {textpassword && <Text style={styles.error}> {textpassword} </Text>}
+
           <TextInput
             style={styles.formTextInput}
             placeholder="Confirm Password"
@@ -178,8 +122,7 @@ export const SignupScreen = props => {
             <Text style={styles.error}> Password Does't Match. </Text>
           )}
         </ScrollView>
-      </SafeAreaView>
-
+      </KeyboardAvoidingView>
       {/* Fotter Block */}
       <View style={styles.footer}>
         <TouchableOpacity style={styles.btnsignup} onPress={() => onPress()}>
