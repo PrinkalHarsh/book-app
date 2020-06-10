@@ -2,14 +2,14 @@ var name = /^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/;
 var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 var passw = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
 
-export const Validation = (type, value) => {
+export const Validation = (type, value, extravalue = '') => {
   switch (type) {
     case 'email':
       if (value.trim() != '') {
         if (reg.test(value) == true) {
-          return 'valid email';
+          return null;
         } else {
-          return 'Please Enter Valid eamil';
+          return 'Please Enter Valid email';
         }
       } else {
         return 'Blank email';
@@ -18,18 +18,29 @@ export const Validation = (type, value) => {
     case 'password':
       if (value.trim() != '') {
         if (passw.test(value) == true) {
-          return 'valid password';
+          return null;
         } else {
-          return 'Please Enter Valid password';
+          return 'Must contain 8< incldsduding 1 capital,1 small,1 Digit, 1 special char';
         }
       } else {
         return 'Blank password';
       }
 
+    case 'confirmpassword':
+      if (value.trim() != '') {
+        if (value.match(extravalue) && value.length == extravalue.length) {
+          return null;
+        } else {
+          return 'Password does not match';
+        }
+      } else {
+        return 'Blank Password';
+      }
+
     case 'name':
       if (value.trim() != '') {
         if (name.test(value) == true) {
-          return 'valid Name';
+          return null;
         } else {
           return 'Please Enter Valid Name';
         }

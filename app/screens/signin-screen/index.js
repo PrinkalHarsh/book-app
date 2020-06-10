@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, ScrollView, KeyboardAvoidingView} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  KeyboardAvoidingView,
+  Tooltip,
+} from 'react-native';
 import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
 import styles from './style';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -7,49 +13,29 @@ import {HeaderBlock} from '@components';
 import {Validation} from '@packages';
 
 export const SigninScreen = props => {
-  const [searchEmail, setSearchEmail] = useState('');
-  const [searchPassword, setSearchPassword] = useState('');
+  const [Email, setEmail] = useState('');
+  const [Password, setPassword] = useState('');
   const [textemail, settextemail] = useState(false);
   const [textpassword, settextpassword] = useState(false);
 
   const onPress = () => {
+    var emailError = Validation('email', Email);
+    var passwordError = Validation('password', Password);
+
     settextemail(false);
-    var emailError = Validation('email', searchEmail);
-    console.log('emailError,', emailError);
     if (emailError) {
       settextemail(emailError);
     }
 
     settextpassword(false);
-    var passwordError = Validation('password', searchPassword);
-    console.log('passwordError,', passwordError);
     if (passwordError) {
       settextpassword(passwordError);
     }
-  };
 
-  const onBlur = () => {
-    settextemail(false);
-    var emailError = Validation('email', searchEmail);
-    console.log('emailError,', emailError);
-    if (emailError) {
-      settextemail(emailError);
-    }
-
-    settextpassword(false);
-    var passwordError = Validation('password', searchPassword);
-    console.log('passwordError,', passwordError);
-    if (passwordError) {
-      settextpassword(passwordError);
+    if (emailError == null && passwordError == null) {
+      props.navigation.navigate('welcome');
     }
   };
-  //   settextpassword(false);
-  //   var passwordError = Validation('password', searchPassword);
-  //   console.log('passwordError,', passwordError);
-  //   if (passwordError) {
-  //     settextpassword(passwordError);
-  //   }
-  // };
 
   return (
     <View style={styles.container}>
@@ -73,19 +59,20 @@ export const SigninScreen = props => {
               placeholder="Email"
               autoFocus={true}
               keyboardType="email-address"
-              value={searchEmail}
-              onChangeText={email => setSearchEmail(email)}
-              onBlur={() => onBlur()}
+              value={Email}
+              onChangeText={email => setEmail(email)}
+              onBlur={() => settextemail(Validation('email', Email))}
             />
             {textemail && <Text style={styles.error}> {textemail} </Text>}
+
             <TextInput
               style={styles.formTextInput}
               secureTextEntry={true}
               placeholder="Password"
               maxLength={16}
-              value={searchPassword}
-              onChangeText={password => setSearchPassword(password)}
-              onBlur={() => onBlur()}
+              value={Password}
+              onChangeText={password => setPassword(password)}
+              onBlur={() => settextpassword(Validation('password', Password))}
             />
             {textpassword && <Text style={styles.error}> {textpassword} </Text>}
           </ScrollView>

@@ -23,7 +23,8 @@
     "react-native-safe-area-context": "^2.0.0",
     "react-native-screens": "^2.8.0",
     "react-native-size-matters": "^0.3.0",
-    "react-native-swiper": "^1.6.0"
+    "react-native-swiper": "^1.6.0",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
