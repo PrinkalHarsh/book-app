@@ -1,29 +1,28 @@
 import React, {useState} from 'react';
 import {View, Text, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
-import {Validation} from '@packages';
+import {validator} from '@packages';
 import styles from './style';
 import {HeaderBlock} from '@components';
 
 export const SignupScreen = props => {
-  const [Fullname, setFullname] = useState('');
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [fullname, setFullname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmPassword] = useState('');
   const [textfullname, settextfullname] = useState(false);
   const [textemail, settextemail] = useState(false);
   const [textpassword, settextpassword] = useState(false);
   const [textconfirmpassword, settextconfirmpassword] = useState(false);
 
   const onPress = () => {
-    // settextfullname(false);
-    var nameError = Validation('name', Fullname);
-    var emailError = Validation('email', Email);
-    var passwordError = Validation('password', Password);
-    var confirmpasswordError = Validation(
+    var nameError = validator('name', fullname);
+    var emailError = validator('email', email);
+    var passwordError = validator('password', password);
+    var confirmpasswordError = validator(
       'confirmpassword',
-      confirmPassword,
-      Password,
+      confirmpassword,
+      password,
     );
 
     settextfullname(nameError);
@@ -60,18 +59,18 @@ export const SignupScreen = props => {
             placeholder="Full Name"
             autoFocus={true}
             keyboardType="default"
-            value={Fullname}
+            value={fullname}
             onChangeText={name => setFullname(name)}
-            onBlur={() => settextfullname(Validation('name', Fullname))}
+            onBlur={() => settextfullname(validator('name', fullname))}
           />
           {textfullname && <Text style={styles.error}> {textfullname} </Text>}
           <TextInput
             style={styles.formTextInput}
             placeholder="Email"
             keyboardType="email-address"
-            value={Email}
+            value={email}
             onChangeText={email => setEmail(email)}
-            onBlur={() => settextemail(Validation('email', Email))}
+            onBlur={() => settextemail(validator('email', email))}
           />
           {textemail && <Text style={styles.error}> {textemail} </Text>}
           <TextInput
@@ -79,9 +78,9 @@ export const SignupScreen = props => {
             placeholder="Password"
             secureTextEntry={true}
             maxLength={25}
-            value={Password}
+            value={password}
             onChangeText={password => setPassword(password)}
-            onBlur={() => settextpassword(Validation('password', Password))}
+            onBlur={() => settextpassword(validator('password', password))}
           />
           {textpassword && <Text style={styles.error}> {textpassword} </Text>}
 
@@ -90,13 +89,13 @@ export const SignupScreen = props => {
             placeholder="Confirm Password"
             secureTextEntry={true}
             maxLength={25}
-            value={confirmPassword}
+            value={confirmpassword}
             onChangeText={confirmpassword =>
               setConfirmPassword(confirmpassword)
             }
             onBlur={() =>
               settextconfirmpassword(
-                Validation('confirmpassword', confirmPassword, Password),
+                validator('confirmpassword', confirmpassword, password),
               )
             }
           />

@@ -10,29 +10,24 @@ import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
 import styles from './style';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {HeaderBlock} from '@components';
-import {Validation} from '@packages';
+import {validator} from '@packages';
 
 export const SigninScreen = props => {
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [textemail, settextemail] = useState(false);
   const [textpassword, settextpassword] = useState(false);
 
   const onPress = () => {
-    var emailError = Validation('email', Email);
-    var passwordError = Validation('password', Password);
+    var emailError = validator('email', email);
+    var passwordError = validator('password', password);
 
-    settextemail(false);
-    if (emailError) {
-      settextemail(emailError);
-    }
+    settextemail(emailError);
+    settextpassword(passwordError);
 
-    settextpassword(false);
-    if (passwordError) {
-      settextpassword(passwordError);
-    }
-
-    if (emailError == null && passwordError == null) {
+    if (emailError || passwordError) {
+      return false;
+    } else {
       props.navigation.navigate('welcome');
     }
   };
@@ -59,9 +54,9 @@ export const SigninScreen = props => {
               placeholder="Email"
               autoFocus={true}
               keyboardType="email-address"
-              value={Email}
+              value={email}
               onChangeText={email => setEmail(email)}
-              onBlur={() => settextemail(Validation('email', Email))}
+              onBlur={() => settextemail(validator('email', email))}
             />
             {textemail && <Text style={styles.error}> {textemail} </Text>}
 
@@ -70,9 +65,9 @@ export const SigninScreen = props => {
               secureTextEntry={true}
               placeholder="Password"
               maxLength={16}
-              value={Password}
+              value={password}
               onChangeText={password => setPassword(password)}
-              onBlur={() => settextpassword(Validation('password', Password))}
+              onBlur={() => settextpassword(validator('password', password))}
             />
             {textpassword && <Text style={styles.error}> {textpassword} </Text>}
           </ScrollView>
