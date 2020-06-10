@@ -16,7 +16,7 @@ export const SignupScreen = props => {
   const [textconfirmpassword, settextconfirmpassword] = useState(false);
 
   const onPress = () => {
-    var nameError = validator('name', fullname);
+    var nameError = validator('fullname', fullname);
     var emailError = validator('email', email);
     var passwordError = validator('password', password);
     var confirmpasswordError = validator(

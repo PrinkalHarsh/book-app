@@ -7,7 +7,10 @@ var constraints = {
       minimum: 6,
       message: 'must be at least 6 characters',
     },
-    fullname: true,
+    format: {
+      pattern: '[a-zA-Z]+',
+      message: 'Please enter valid password',
+    },
   },
   email: {
     presence: {allowEmpty: false},
@@ -33,7 +36,7 @@ export const validator = (field, value) => {
 
   let constraint = new Object();
   constraint[field] = constraints[field];
-  //   console.log(object, constraint);
+  console.log(object, constraint);
 
   // Validate against the constraint and hold the error messages
 
