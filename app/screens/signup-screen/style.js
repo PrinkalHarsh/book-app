@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
 import {Size} from '@theme';
 import {Colors} from '@theme';
+import {Fonts} from '@theme';
 
 export default StyleSheet.create({
   container: {
@@ -21,7 +22,8 @@ export default StyleSheet.create({
   createaccountText: {
     color: Colors.Secondary,
     fontSize: Size.moderateScale(36),
-    fontWeight: '600',
+    // fontWeight: '600',
+    fontFamily: Fonts.header,
   },
   image: {
     justifyContent: 'center',

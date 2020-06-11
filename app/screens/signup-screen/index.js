@@ -15,21 +15,21 @@ export const SignupScreen = props => {
   const [textpassword, settextpassword] = useState(false);
   const [textconfirmpassword, settextconfirmpassword] = useState(false);
 
+  // on Press validation
   const onPress = () => {
     var nameError = validator('fullname', fullname);
     var emailError = validator('email', email);
     var passwordError = validator('password', password);
-    var confirmpasswordError = validator(
-      'confirmpassword',
-      confirmpassword,
-      password,
-    );
+    var confirmpasswordError = validator('confirmpassword', confirmpassword, {
+      password: password,
+    });
 
     settextfullname(nameError);
     settextemail(emailError);
     settextpassword(passwordError);
     settextconfirmpassword(confirmpasswordError);
 
+    // check result and navigate to next page
     if (nameError || emailError || passwordError || confirmpasswordError) {
       return false;
     } else {
@@ -61,7 +61,7 @@ export const SignupScreen = props => {
             keyboardType="default"
             value={fullname}
             onChangeText={name => setFullname(name)}
-            onBlur={() => settextfullname(validator('name', fullname))}
+            onBlur={() => settextfullname(validator('fullname', fullname))}
           />
           {textfullname && <Text style={styles.error}> {textfullname} </Text>}
           <TextInput

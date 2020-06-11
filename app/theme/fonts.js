@@ -1,5 +1,3 @@
-export const Colors = {
-  moderateScale: '#FF6EA1',
-  scale: '#FFFFFF',
-  btnskip: '#707070',
+export const Fonts = {
+  header: 'Roboto-LightItalic',
 };
