@@ -36,11 +36,11 @@ var constraints = {
 };
 
 export const validator = (field, value, extra = {}) => {
-  console.log(field, value);
+  // console.log(field, value);
   let object = new Object();
 
   object[field] = value;
-  console.log('thisi s first', object);
+  // console.log('thisi s first', object);
 
   if (!isEmpty(extra)) {
     let tempkey = Object.keys(extra);
@@ -48,20 +48,20 @@ export const validator = (field, value, extra = {}) => {
     let tempvalue = Object.values(extra);
     let tmpValue = tempvalue[0];
     object[tmpKeyValue] = tmpValue;
-    console.log('this is final object with confirm password', object);
+    // console.log('this is final object with confirm password', object);
   }
 
-  console.log('this is forgot password', object, extra);
+  // console.log('this is forgot password', object, extra);
 
   let constraint = new Object();
   constraint[field] = constraints[field];
-  console.log('object, constraint', object, constraint);
+  // console.log('object, constraint', object, constraint);
 
   // Validate against the constraint and hold the error messages
 
   const result = validate(object, constraint);
   if (result) {
-    console.log(result[field][0]);
+    // console.log(result[field][0]);
     return result[field][0];
   }
 

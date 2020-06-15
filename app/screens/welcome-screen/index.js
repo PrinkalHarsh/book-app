@@ -152,7 +152,9 @@ export const WelcomeScreen = props => {
 
       {/* Footer Block */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerbtn}>
+        <TouchableOpacity
+          style={styles.footerbtn}
+          onPress={() => props.navigation.navigate('BottomTabs')}>
           <Text style={styles.btnText}>Apply</Text>
         </TouchableOpacity>
       </View>

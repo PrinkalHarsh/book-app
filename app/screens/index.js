@@ -8,3 +8,4 @@ export * from './profile-screen/index';
 export * from './landing-screen/index';
 export * from './signin-screen/index';
 export * from './signup-screen/index';
+export * from './detail-screen/index';
