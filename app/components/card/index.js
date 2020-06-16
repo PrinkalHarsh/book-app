@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import styles from './style';
 
 export const CardBlock = ({title, body}) => {
@@ -7,13 +7,13 @@ export const CardBlock = ({title, body}) => {
     <View style={styles.container}>
       {/* Card Block */}
       <View style={styles.card}>
+        {/* Title Block */}
         <Text style={styles.titletext}>
           Title:
           <Text style={styles.text}> {title}</Text>
         </Text>
-        <Text style={styles.bodytext}>
-          <Text style={styles.text}> {body}</Text>
-        </Text>
+        {/* Body Block */}
+        {/* <Text style={styles.text}> {body}</Text> */}
       </View>
     </View>
   );

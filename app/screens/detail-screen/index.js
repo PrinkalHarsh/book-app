@@ -3,25 +3,27 @@ import {View, Text, FlatList} from 'react-native';
 import styles from './style';
 
 export const DetailScreen = ({route}) => {
-  const {itemId, title, body} = route.params;
-  useEffect(() => {
-    // var api = 'https://jsonplaceholder.typicode.com/posts/';
+  const {itemId} = route.params;
+  const [data, setData] = useState([]);
 
-    // var url = api + itemId;
-    // console.log('Final url', url, itemId);
+  useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${itemId}`)
       .then(response => response.json())
       .then(json => {
-        console.log('post', json);
         setData(json);
       });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>
-        "Title": {title} , "Body": {body}
-      </Text>
+      <View style={styles.content}>
+        <Text style={styles.bodytext}>Title: </Text>
+        <Text style={styles.text}>{data.title}</Text>
+      </View>
+      <View style={styles.content}>
+        <Text style={styles.bodytext}>Body: </Text>
+        <Text style={styles.text}>{data.body} </Text>
+      </View>
     </View>
   );
 };

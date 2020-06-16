@@ -18,10 +18,6 @@ export default StyleSheet.create({
     color: Colors.Primary,
     fontSize: Size.moderateScale(22),
   },
-  bodytext: {
-    fontSize: Size.moderateScale(20),
-    color: Colors.Primary,
-  },
   text: {
     color: 'grey',
     fontSize: Size.moderateScale(17),
