@@ -24,6 +24,7 @@
     "react-native-screens": "^2.8.0",
     "react-native-size-matters": "^0.3.0",
     "react-native-swiper": "^1.6.0",
+    "react-native-tab-view": "^2.14.4",
     "validate.js": "^0.13.1"
   },
   "devDependencies": {
