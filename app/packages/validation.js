@@ -5,7 +5,7 @@ var passw = /(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
 export const Validation = (type, value, extravalue = '') => {
   switch (type) {
     case 'email':
-      if (value.trim() != '') {
+      if (value != '') {
         if (reg.test(value) == true) {
           return null;
         } else {

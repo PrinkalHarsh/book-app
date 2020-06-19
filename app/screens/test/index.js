@@ -1,47 +1,90 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {View, Text} from 'react-native';
+import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './style';
-import {HeaderTitle} from '@react-navigation/stack';
+import {validator} from '@packages';
+import {useFormInput} from '@hooks';
 
 export const test = () => {
-  /**
-   *custom create hooks for form input which takes form inputs and return values
-   */
-  const useFormInput = initialvalue => {
-    const [value, setvalue] = useState(initialvalue);
-    const onChange = e => {
-      setvalue(e);
-    };
+  const name = useFormInput([]);
+  const surname = useFormInput([]);
+  const email = useFormInput([]);
+  const password = useFormInput([]);
+  const city = useFormInput([]);
+  const [textname, settextname] = useState('');
+  const [textsurname, settextsurname] = useState('');
+  const [textemail, settextemail] = useState('');
+  const [textpassword, settextpassword] = useState('');
+  const [textcity, settextcity] = useState('');
 
-    return {
-      value,
-      onChangeText: onChange,
-    };
+  // On Press
+  const onpress = () => {
+    settextname(validator('name', name.value));
+    settextsurname(validator('surname', surname.value));
+    settextemail(validator('email', email.value));
+    settextpassword(validator('password', password.value));
+    settextcity(validator('city', city.value));
   };
 
-  const name = useFormInput('Mary');
-  const surname = useFormInput('za');
-  const [header, setheader] = useState([]);
+  // On Blur
+  const onblur = () => {
+    settextname(validator('name', name.value));
+    settextsurname(validator('surname', surname.value));
+    settextemail(validator('email', email.value));
+    settextpassword(validator('password', password.value));
+    settextcity(validator('city', city.value));
+  };
 
   /**
    *custom create hooks for header input which sets users inputs and return values
    */
 
-  useDocumentTitle(name.value + ' ' + surname.value);
-
-  function useDocumentTitle(Title) {
-    useEffect(() => {
-      setheader(Title);
-    });
-  }
   return (
     <View style={styles.container}>
-      <TextInput> {header} </TextInput>
-      <Text>name</Text>
-      <TextInput {...name} />
-      <Text>surname</Text>
-      <TextInput {...surname} />
+      <Text>Name</Text>
+      <TextInput
+        style={styles.input}
+        {...name}
+        placeholder="Name"
+        onBlur={() => onblur()}
+      />
+      <Text style={styles.header}>{textname}</Text>
+      <Text>Surname</Text>
+      <TextInput
+        style={styles.input}
+        {...surname}
+        placeholder="Surname"
+        onBlur={() => onblur()}
+      />
+      <Text style={styles.header}>{textsurname}</Text>
+      <Text>E-mail</Text>
+      <TextInput
+        style={styles.input}
+        {...email}
+        placeholder="E-mail"
+        onBlur={() => onblur()}
+      />
+      <Text style={styles.header}>{textemail}</Text>
+      <Text>Password</Text>
+      <TextInput
+        style={styles.input}
+        {...password}
+        placeholder="Password"
+        secureTextEntry={true}
+        onBlur={() => onblur()}
+      />
+      <Text style={styles.header}>{textpassword}</Text>
+      <Text>City</Text>
+      <TextInput
+        style={styles.input}
+        {...city}
+        placeholder="City"
+        onBlur={() => onblur()}
+      />
+      <Text style={styles.header}>{textcity}</Text>
+      <TouchableOpacity onPress={() => onpress()}>
+        <Text>Submit</Text>
+      </TouchableOpacity>
     </View>
   );
 };

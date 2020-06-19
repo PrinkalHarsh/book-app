@@ -1,11 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  KeyboardAvoidingView,
-  Tooltip,
-} from 'react-native';
+import {View, Text, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
 import styles from './style';
 import {SafeAreaView} from 'react-native-safe-area-context';

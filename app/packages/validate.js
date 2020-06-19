@@ -1,6 +1,27 @@
 import validate from 'validate.js';
 import {isEmpty} from 'lodash';
 var constraints = {
+  name: {
+    presence: {allowEmpty: false},
+    format: {
+      pattern: '[a-zA-Z]+',
+      message: 'Please enter valid Name',
+    },
+  },
+  surname: {
+    presence: {allowEmpty: false},
+    format: {
+      pattern: '[a-zA-Z]+',
+      message: 'Please enter valid surname',
+    },
+  },
+  city: {
+    presence: {allowEmpty: false},
+    format: {
+      pattern: '[a-zA-Z]+',
+      message: 'Please enter valid city',
+    },
+  },
   fullname: {
     presence: {allowEmpty: false},
     length: {
@@ -36,7 +57,7 @@ var constraints = {
 };
 
 export const validator = (field, value, extra = {}) => {
-  // console.log(field, value);
+  // console.log('Field and value', field, value);
   let object = new Object();
 
   object[field] = value;
@@ -61,7 +82,7 @@ export const validator = (field, value, extra = {}) => {
 
   const result = validate(object, constraint);
   if (result) {
-    // console.log(result[field][0]);
+    // console.log('result', result[field][0]);
     return result[field][0];
   }
 

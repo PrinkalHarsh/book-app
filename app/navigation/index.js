@@ -51,6 +51,7 @@ const BottomTabs = () => {
 const RootNavigation = () => {
   return (
     <Stack.Navigator headerMode="none">
+      {/* <Stack.Screen name="signin" component={SigninScreen} /> */}
       <Stack.Screen name="test" component={test} />
       {/* <Tab.Screen name="store" component={StoreScreen} />
       <Stack.Screen name="detail" component={DetailScreen} /> */}
