@@ -1,40 +1,21 @@
-import {ThemeContext, themes} from './theme-context';
-import ThemedButton from './themed-button';
+import React from 'react';
+import {View, Text} from 'react-native';
+import {Screen1} from './screen1';
 
-// An intermediate component that uses the ThemedButton
-function Toolbar(props) {
-  return <ThemedButton onClick={props.changeTheme}>Change Theme</ThemedButton>;
-}
+export const Usercontext = React.createContext();
+export const Channelcontext = React.createContext();
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      theme: themes.light,
-    };
+export const context = props => {
+  return (
+    <View>
+      <Text> index page</Text>
+      <Text> index page</Text>
 
-    this.toggleTheme = () => {
-      this.setState(state => ({
-        theme: state.theme === themes.dark ? themes.light : themes.dark,
-      }));
-    };
-  }
-
-  render() {
-    // The ThemedButton button inside the ThemeProvider
-    // uses the theme from state while the one outside uses
-    // the default dark theme
-    return (
-      <Page>
-        <ThemeContext.Provider value={this.state.theme}>
-          <Toolbar changeTheme={this.toggleTheme} />
-        </ThemeContext.Provider>
-        <Section>
-          <ThemedButton />
-        </Section>
-      </Page>
-    );
-  }
-}
-
-ReactDOM.render(<App />, document.root);
+      <Usercontext.Provider value={'Prinkal'}>
+        <Channelcontext.Provider value={'Patel'}>
+          <Screen1 />
+        </Channelcontext.Provider>
+      </Usercontext.Provider>
+    </View>
+  );
+};

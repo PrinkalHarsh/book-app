@@ -16,6 +16,7 @@ import {
   SignupScreen,
   DetailScreen,
   test,
+  context,
 } from '@screens';
 
 const Stack = createStackNavigator();
@@ -31,6 +32,7 @@ const AuthStack = () => {
       <Stack.Screen name="welcome" component={WelcomeScreen} />
       <Stack.Screen name="detail" component={DetailScreen} />
       <Stack.Screen name="test" component={test} />
+      <Stack.Screen name="context" component={context} />
     </Stack.Navigator>
   );
 };
@@ -51,10 +53,7 @@ const BottomTabs = () => {
 const RootNavigation = () => {
   return (
     <Stack.Navigator headerMode="none">
-      {/* <Stack.Screen name="signin" component={SigninScreen} /> */}
-      <Stack.Screen name="test" component={test} />
-      {/* <Tab.Screen name="store" component={StoreScreen} />
-      <Stack.Screen name="detail" component={DetailScreen} /> */}
+      <Stack.Screen name="context" component={context} />
       {/* <Stack.Screen name="AuthStack" component={AuthStack} />
       <Stack.Screen name="BottomTabs" component={BottomTabs} /> */}
     </Stack.Navigator>

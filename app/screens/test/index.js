@@ -1,16 +1,15 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
-import {TextInput, TouchableOpacity} from 'react-native-gesture-handler';
+import React, {useState} from 'react';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {validator} from '@packages';
 import {useFormInput} from '@hooks';
 
 export const test = () => {
-  const name = useFormInput([]);
-  const surname = useFormInput([]);
-  const email = useFormInput([]);
-  const password = useFormInput([]);
-  const city = useFormInput([]);
+  const name = useFormInput('');
+  const surname = useFormInput('');
+  const email = useFormInput('');
+  const password = useFormInput('');
+  const city = useFormInput('');
   const [textname, settextname] = useState('');
   const [textsurname, settextsurname] = useState('');
   const [textemail, settextemail] = useState('');
@@ -26,15 +25,6 @@ export const test = () => {
     settextcity(validator('city', city.value));
   };
 
-  // On Blur
-  const onblur = () => {
-    settextname(validator('name', name.value));
-    settextsurname(validator('surname', surname.value));
-    settextemail(validator('email', email.value));
-    settextpassword(validator('password', password.value));
-    settextcity(validator('city', city.value));
-  };
-
   /**
    *custom create hooks for header input which sets users inputs and return values
    */
@@ -43,10 +33,10 @@ export const test = () => {
     <View style={styles.container}>
       <Text>Name</Text>
       <TextInput
-        style={styles.input}
         {...name}
+        style={styles.input}
         placeholder="Name"
-        onBlur={() => onblur()}
+        onBlur={() => settextname(validator('name', name.value))}
       />
       <Text style={styles.header}>{textname}</Text>
       <Text>Surname</Text>
@@ -54,7 +44,7 @@ export const test = () => {
         style={styles.input}
         {...surname}
         placeholder="Surname"
-        onBlur={() => onblur()}
+        onBlur={() => settextsurname(validator('surname', surname.value))}
       />
       <Text style={styles.header}>{textsurname}</Text>
       <Text>E-mail</Text>
@@ -62,7 +52,7 @@ export const test = () => {
         style={styles.input}
         {...email}
         placeholder="E-mail"
-        onBlur={() => onblur()}
+        onBlur={() => settextemail(validator('email', email.value))}
       />
       <Text style={styles.header}>{textemail}</Text>
       <Text>Password</Text>
@@ -71,7 +61,7 @@ export const test = () => {
         {...password}
         placeholder="Password"
         secureTextEntry={true}
-        onBlur={() => onblur()}
+        onBlur={() => settextpassword(validator('password', password.value))}
       />
       <Text style={styles.header}>{textpassword}</Text>
       <Text>City</Text>
@@ -79,7 +69,7 @@ export const test = () => {
         style={styles.input}
         {...city}
         placeholder="City"
-        onBlur={() => onblur()}
+        onBlur={() => settextcity(validator('city', city.value))}
       />
       <Text style={styles.header}>{textcity}</Text>
       <TouchableOpacity onPress={() => onpress()}>

@@ -10,3 +10,4 @@ export * from './signin-screen/index';
 export * from './signup-screen/index';
 export * from './detail-screen/index';
 export * from './test/index';
+export * from './context/index';
