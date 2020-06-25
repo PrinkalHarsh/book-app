@@ -8,8 +8,8 @@ export const DetailScreen = ({route}) => {
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/posts/${itemId}`)
-      .then(response => response.json())
-      .then(json => {
+      .then((response) => response.json())
+      .then((json) => {
         setData(json);
       });
   }, []);
